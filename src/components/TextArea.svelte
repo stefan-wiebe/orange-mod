@@ -6,10 +6,15 @@
 
 <script lang="ts">
 	import type { WithTarget } from 'src/types/WithTarget';
+	import { nanoid } from 'nanoid';
 
 	import { createEventDispatcher } from 'svelte';
+	import Label from './Label.svelte';
 
 	export let value: string[] = [];
+	export let label: string = '';
+
+	const id = nanoid();
 
 	const dispatch = createEventDispatcher<TextAreaEvents>();
 
@@ -18,4 +23,9 @@
 	}
 </script>
 
-<textarea on:input={handleInput} style="width: 400px; height: 200px;">{value.join('\n')}</textarea>
+<div>
+	<Label for={id}>{label}</Label>
+	<textarea {id} on:input={handleInput} style="width: 400px; height: 200px;"
+		>{value.join('\n')}</textarea
+	>
+</div>

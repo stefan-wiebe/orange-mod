@@ -4,6 +4,7 @@
 	import Immutable from 'immutable';
 	import { get } from 'svelte/store';
 	import TextArea, { TextAreaEvents } from '../components/TextArea.svelte';
+	import FormLayout from '../components/FormLayout.svelte';
 
 	const startingDate = dayjs('2022-01-01');
 
@@ -28,11 +29,14 @@
 	}
 </script>
 
-<h1>
-	<div>
-		<h1>{moderator}</h1>
-	</div>
+<div class="py-8">
+	Diese Woche moderiert
+	<h1 class="text-4xl mb-8">{moderator}</h1>
 
-	<TextArea value={unsortedEmployees.toArray()} on:input={updateEmployees} />
-	<button type="button" on:click={handleSort}>Sortieren</button>
-</h1>
+	<FormLayout>
+		<TextArea label="Moderatoren" value={unsortedEmployees.toArray()} on:input={updateEmployees} />
+		<div>
+			<button type="button" on:click={handleSort}>Sortieren</button>
+		</div>
+	</FormLayout>
+</div>
