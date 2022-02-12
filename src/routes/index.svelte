@@ -5,6 +5,7 @@
 	import { get } from 'svelte/store';
 	import TextArea, { TextAreaEvents } from '../components/TextArea.svelte';
 	import FormLayout from '../components/FormLayout.svelte';
+	import Button from '../components/Button.svelte';
 
 	const startingDate = dayjs('2022-01-01');
 
@@ -36,7 +37,7 @@
 	<FormLayout>
 		<TextArea label="Moderatoren" value={unsortedEmployees.toArray()} on:input={updateEmployees} />
 		<div>
-			<button type="button" on:click={handleSort}>Sortieren</button>
+			<Button on:click={handleSort}>Sortieren</Button>
 		</div>
 	</FormLayout>
 </div>

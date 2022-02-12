@@ -25,7 +25,5 @@
 
 <div>
 	<Label for={id}>{label}</Label>
-	<textarea {id} on:input={handleInput} style="width: 400px; height: 200px;"
-		>{value.join('\n')}</textarea
-	>
+	<textarea {id} on:input={handleInput} class="h-48">{value.join('\n')}</textarea>
 </div>
