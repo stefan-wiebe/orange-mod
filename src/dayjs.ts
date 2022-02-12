@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
-import weekOfYear from 'dayjs/plugin/weekOfYear';
-import isoWeek from 'dayjs/plugin/isoWeek';
+import weekOfYear from 'dayjs/plugin/weekOfYear.js';
+import isoWeek from 'dayjs/plugin/isoWeek.js';
 
-import localizedFormat from 'dayjs/plugin/localizedFormat';
-import 'dayjs/locale/de';
+import localizedFormat from 'dayjs/plugin/localizedFormat.js';
+import 'dayjs/locale/de.js';
 
 dayjs.locale('de');
 dayjs.extend(weekOfYear);
