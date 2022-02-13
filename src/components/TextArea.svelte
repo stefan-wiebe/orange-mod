@@ -25,5 +25,14 @@
 
 <div>
 	<Label for={id}>{label}</Label>
-	<textarea {id} on:input={handleInput} class="h-48">{value.join('\n')}</textarea>
+	<textarea
+		{id}
+		on:input={handleInput}
+		class="
+	h-48 rounded-lg
+	bg-zinc-100 text-zinc-900 border-none
+	dark:bg-zinc-800 dark:text-zinc-50 
+	shadow-inner shadow-zinc-400/30 dark:shadow-slate-900/50
+	">{value.join('\n')}</textarea
+	>
 </div>
