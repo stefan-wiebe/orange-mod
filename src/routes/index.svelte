@@ -6,6 +6,7 @@
 	import TextArea, { TextAreaEvents } from '../components/TextArea.svelte';
 	import FormLayout from '../components/FormLayout.svelte';
 	import Button from '../components/Button.svelte';
+	import { RepeatIcon } from 'svelte-feather-icons';
 
 	const startingDate = dayjs('2022-01-01');
 
@@ -37,7 +38,7 @@
 	<FormLayout>
 		<TextArea label="Moderatoren" value={unsortedEmployees.toArray()} on:input={updateEmployees} />
 		<div>
-			<Button on:click={handleSort}>Sortieren</Button>
+			<Button on:click={handleSort}><RepeatIcon size="24" /> Sortieren</Button>
 		</div>
 	</FormLayout>
 </div>

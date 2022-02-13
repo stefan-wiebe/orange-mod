@@ -6,7 +6,8 @@
 	{type}
 	on:click
 	class="
-    py-3 px-5 rounded-lg 
+    flex gap-2
+    py-3 px-4 rounded-lg 
     bg-slate-800 text-slate-50 shadow shadow-slate-800/30
     hover:bg-slate-900 hover:shadow-slate-900/30
     focus-visible:outline-none
