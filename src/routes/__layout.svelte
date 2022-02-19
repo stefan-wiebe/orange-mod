@@ -17,15 +17,17 @@
 </script>
 
 <div class="container mx-auto">
-	<div
-		on:click={() =>
-			preferences.update((preferences) => ({ ...preferences, dark: !preferences.dark }))}
-	>
-		{#if $preferences?.dark}
-			<MoonIcon size="24" class="text-white" />
-		{:else}
-			<SunIcon size="24" class="text-zinc-900" />
-		{/if}
+	<div class="py-4">
+		<div
+			on:click={() =>
+				preferences.update((preferences) => ({ ...preferences, dark: !preferences.dark }))}
+		>
+			{#if $preferences?.dark}
+				<MoonIcon size="24" class="text-white" />
+			{:else}
+				<SunIcon size="24" class="text-zinc-900" />
+			{/if}
+		</div>
 	</div>
 	<slot />
 </div>

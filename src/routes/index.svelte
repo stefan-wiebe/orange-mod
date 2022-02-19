@@ -9,6 +9,7 @@
 	import { RepeatIcon } from 'svelte-feather-icons';
 
 	const startingDate = dayjs('2022-01-01');
+	const date = dayjs();
 
 	$: unsortedEmployees = Immutable.List($preferences.employees);
 
@@ -20,7 +21,7 @@
 		return employees.get(d.diff(startingDate, 'weeks') % employees.size);
 	};
 
-	$: moderator = getEmployeeForDate(dayjs()) ?? 'Niemand?';
+	$: moderator = getEmployeeForDate(date) ?? 'Niemand?';
 
 	function updateEmployees(event: CustomEvent<TextAreaEvents['input']>) {
 		preferences.update((old) => ({ ...old, employees: event.detail }));
@@ -32,9 +33,14 @@
 </script>
 
 <div class="py-8">
-	Diese Woche moderiert
-	<h1 class="text-4xl mb-8">{moderator}</h1>
-
+	<section class="mb-4">
+		Diese Woche moderiert
+		<h1 class="text-4xl">{moderator}</h1>
+	</section>
+	<section class="mb-4">
+		<p>Es ist {date.format('dddd')}, der {date.format('LL')}</p>
+		<p>Kalenderwoche {date.isoWeek()}</p>
+	</section>
 	<FormLayout>
 		<TextArea label="Moderatoren" value={unsortedEmployees.toArray()} on:input={updateEmployees} />
 		<div>
