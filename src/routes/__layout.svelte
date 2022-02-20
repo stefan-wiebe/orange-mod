@@ -50,5 +50,6 @@
 	body {
 		@apply bg-zinc-50 text-zinc-900;
 		@apply dark:bg-zinc-900 dark:text-zinc-50;
+		@apply focus-visible:outline-none;
 	}
 </style>

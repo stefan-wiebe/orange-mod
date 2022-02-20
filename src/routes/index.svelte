@@ -18,9 +18,8 @@
 	const startingDate = dayjs('2022-01-01');
 	const date = dayjs();
 
-	let skips = 0;
-
 	$: unsortedEmployees = Immutable.List($preferences.employees);
+	$: skips = $preferences.skips;
 
 	$: employees = unsortedEmployees.sort((a, b) => {
 		return a.localeCompare(b) * -1;
@@ -39,6 +38,18 @@
 	function handleSort(event: MouseEvent) {
 		preferences.update((old) => ({ ...old, employees: employees.toArray() }));
 	}
+
+	function incrementSkips() {
+		preferences.update((old) => ({ ...old, skips: (old.skips + 1) % employees.count() }));
+	}
+
+	function decrementSkips() {
+		preferences.update((old) => ({ ...old, skips: (old.skips - 1) % employees.count() }));
+	}
+
+	function resetSkips() {
+		preferences.update((old) => ({ ...old, skips: 0 }));
+	}
 </script>
 
 <div class="py-8">
@@ -46,9 +57,13 @@
 		Diese Woche moderiert
 		<h1 class="text-4xl">{moderator}</h1>
 		<div class="flex mt-2 gap-2">
-			<Button on:click={() => skips--}><ArrowLeftIcon size="24" /></Button>
-			<Button on:click={() => (skips = 0)}><RotateCcwIcon size="24" /></Button>
-			<Button on:click={() => skips++}><ArrowRightIcon size="24" /></Button>
+			<Button on:click={decrementSkips}><ArrowLeftIcon size="24" /></Button>
+			<Button on:click={resetSkips}>
+				<RotateCcwIcon size="24" />
+			</Button>
+			<Button on:click={incrementSkips}>
+				<ArrowRightIcon size="24" />
+			</Button>
 		</div>
 	</section>
 	<section class="mb-4">
